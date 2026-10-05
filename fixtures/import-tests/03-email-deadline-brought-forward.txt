@@ -1,0 +1,42 @@
+FICTIONAL TEST DATA - independent sample, not a real team record
+Timezone for all messages: Europe/London
+Mailbox export shows newest message first. Quoted messages are duplicates of the originals.
+
+Message-ID: E3
+Sent: Wednesday 7 October 2026, 09:10 +0100
+From: Alex Rivera <alex@team.example.test>
+To: Sam Patel <sam@team.example.test>
+Subject: Re: Northstar final proposal
+
+Confirmed. I'll deliver the FINAL Northstar proposal by Tuesday 13 October at 16:00.
+That replaces the Friday 16 October deadline. Northstar's board needs it earlier.
+Alex
+
+> Message-ID: E2
+> Sent: Tuesday 6 October 2026, 14:20 +0100
+> From: Sam Patel
+> Client Northstar has asked for the final proposal before its board meeting.
+> Can we bring Alex's deadline forward to Tuesday 13 October, 16:00?
+
+----- Original message -----
+Message-ID: E1
+Sent: Monday 5 October 2026, 10:00 +0100
+From: Sam Patel <sam@team.example.test>
+To: Alex Rivera <alex@team.example.test>
+Subject: Northstar final proposal
+
+Agreed in today's call: Alex will deliver the final Northstar proposal by Friday 16 October.
+Please keep the agreed date in the record if it changes.
+
+----- Reply -----
+Message-ID: E2
+Sent: Tuesday 6 October 2026, 14:20 +0100
+From: Sam Patel <sam@team.example.test>
+To: Alex Rivera <alex@team.example.test>
+Subject: Re: Northstar final proposal
+
+Client Northstar has asked for the final proposal before its board meeting.
+Can we bring Alex's deadline forward to Tuesday 13 October, 16:00?
+
+> Message-ID: E1
+> Agreed in today's call: Alex will deliver the final Northstar proposal by Friday 16 October.

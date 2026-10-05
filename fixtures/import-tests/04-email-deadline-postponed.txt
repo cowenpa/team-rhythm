@@ -1,0 +1,33 @@
+FICTIONAL TEST DATA - independent sample, not a real team record
+Timezone for all messages: Europe/London
+
+Message-ID: P1
+Sent: Monday 5 October 2026, 11:00 +0100
+From: Sam Patel <sam@team.example.test>
+To: Alex Rivera <alex@team.example.test>
+Subject: Approval summary for Northstar
+
+As agreed, Alex will complete the Northstar approval summary by Thursday 8 October.
+We need Jordan's answer before Alex can finalise the summary.
+
+Message-ID: P2
+Sent: Tuesday 6 October 2026, 15:40 +0100
+From: Sam Patel <sam@team.example.test>
+To: Alex Rivera <alex@team.example.test>
+Subject: Re: Approval summary for Northstar
+
+Jordan is away until Monday 19 October. Let's postpone this two weeks from the
+original Thursday deadline, keeping Alex as owner. Jordan's answer is a dependency,
+not a new task for Jordan in our team workspace.
+
+Message-ID: P3
+Sent: Wednesday 7 October 2026, 08:15 +0100
+From: Alex Rivera <alex@team.example.test>
+To: Sam Patel <sam@team.example.test>
+Subject: Re: Approval summary for Northstar
+
+Agreed, two weeks later than the original due date. I'll complete the approval
+summary then, once Jordan has replied. Please keep the original date and reason.
+
+> Message-ID: P1
+> Alex will complete the Northstar approval summary by Thursday 8 October.

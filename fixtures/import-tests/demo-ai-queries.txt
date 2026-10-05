@@ -1,0 +1,141 @@
+TEAM RHYTHM - DEMO AI QUESTIONS
+Expected answer guidance only. These are not live model responses.
+For each question, use only its stated source. Never supply the expected answer to the model.
+
+H1 | fact
+SOURCE: 07-meeting-history-for-ai-queries.txt
+ASK: Who originally agreed to finish the onboarding guide, and by when?
+EXPECTED: Alex agreed on 25 September to finish the onboarding guide by 2 October 2026. Sam recorded the agreement; Alex owns the task.
+EVIDENCE: H-25SEP
+MUST NOT INVENT: Sam is the task owner; The original agreement was due 5 October
+
+H2 | fact
+SOURCE: 07-meeting-history-for-ai-queries.txt
+ASK: What is the latest recorded deadline for the onboarding guide, and what changed?
+EXPECTED: The latest recorded deadline is 5 October, with Alex still the owner. The original deadline was 2 October. Sam recorded the agreed extension on 1 October, and the 2 October meeting carried it forward.
+EVIDENCE: H-25SEP, H-01OCT, H-02OCT
+MUST NOT INVENT: The original agreement was overwritten; The guide has been completed
+
+H3 | calculation
+SOURCE: 07-meeting-history-for-ai-queries.txt
+ASK: What is the average meeting rating, and how many people answered?
+EXPECTED: The average is 8.0 out of 10 across eight submitted ratings in four meetings. Two people, Alex and Sam, each rated all four meetings.
+EVIDENCE: H-11SEP, H-18SEP and H-25SEP, H-02OCT
+MUST NOT INVENT: Eight different people answered; The amendment is a fifth meeting
+
+H4 | calculation
+SOURCE: 07-meeting-history-for-ai-queries.txt
+ASK: How often did Alex and Sam miss their targets, and by how much?
+EXPECTED: Both missed in two of four weeks, or 50%. Alex was short by two enquiries on 11 September and one on 18 September: an average shortfall of 1.5 enquiries across the missed weeks. Sam was one hour over on 11 September and two hours over on 25 September: an average excess of 1.5 hours across the missed weeks. These are different measures, so their gap sizes should not be combined.
+EVIDENCE: H-11SEP, H-18SEP, H-11SEP, H-25SEP
+MUST NOT INVENT: Lower response time is a miss; A combined average gap in enquiries and hours; Target misses prove individual underperformance
+
+H5 | fact
+SOURCE: 07-meeting-history-for-ai-queries.txt
+ASK: Which issue keeps coming back?
+EXPECTED: Unclear handoffs appears in three of four meetings: 11, 18 and 25 September. Friday cover appears in two: 18 September and 2 October. Counts are distinct meetings, not repeated mentions.
+EVIDENCE: H-11SEP, H-18SEP, H-25SEP, H-18SEP, H-02OCT
+
+H6 | inference
+SOURCE: 07-meeting-history-for-ai-queries.txt
+ASK: What is most likely slowing the team down?
+EXPECTED: Unclear handoffs is the strongest recurring concern in these records, appearing in three of four meetings. It is a sensible place to investigate first, but the records do not prove it caused the missed targets or the guide's delay.
+EVIDENCE: H-11SEP, H-18SEP, H-25SEP
+LIMIT: Label the bottleneck suggestion as an inference; causal evidence is absent.
+MUST NOT INVENT: Handoffs definitely caused the delays; Alex or Sam is to blame
+
+H7 | partial
+SOURCE: 07-meeting-history-for-ai-queries.txt
+ASK: Is the onboarding guide finished?
+EXPECTED: Its last recorded status was open in the 2 October meeting, assigned to Alex and due 5 October. No later completion update is included, so I cannot confirm whether it is finished now.
+EVIDENCE: H-02OCT, Known limits
+FOLLOW-UP: Has Alex recorded a completion update since 2 October?
+MUST NOT INVENT: Definitely completed; Definitely still unfinished today; Overdue without a query date and current-status evidence
+
+H8 | partial
+SOURCE: 07-meeting-history-for-ai-queries.txt
+ASK: Why did Alex's deadline change?
+EXPECTED: The record confirms an agreed extension from 2 to 5 October, recorded by Sam on 1 October. It does not record the reason. Alex or Sam would need to clarify that.
+EVIDENCE: H-01OCT
+MUST NOT INVENT: Client urgency caused this extension; Illness, workload or poor performance caused it; Facts from another independent fixture apply to this guide
+
+H9 | partial
+SOURCE: 07-meeting-history-for-ai-queries.txt
+ASK: Who is covering Friday?
+EXPECTED: Friday cover was confirmed in the 2 October meeting, but the person's name was not recorded. I can confirm the decision, but not identify who is covering.
+EVIDENCE: H-02OCT
+FOLLOW-UP: Who was named in the Friday-cover agreement?
+MUST NOT INVENT: Sam is covering because he appears nearby in the notes; Alex is covering by default
+
+H10 | partial
+SOURCE: 07-meeting-history-for-ai-queries.txt
+ASK: Who is underperforming more, Alex or Sam?
+EXPECTED: Both missed their own targets in two of four weeks. Alex's measure is enquiries; Sam's is response time. That supports a comparison of miss frequency, but not a fair overall ranking of their performance. The records do not establish workload, resources or causes.
+EVIDENCE: H-11SEP, H-18SEP, H-11SEP, H-25SEP
+MUST NOT INVENT: A made-up performance score; Alex or Sam is the worse employee
+
+H11 | inference
+SOURCE: 07-meeting-history-for-ai-queries.txt
+ASK: What should we put first on the next meeting agenda?
+EXPECTED: A useful starting point is to review the onboarding guide and the handoff process: the guide was still open in the latest meeting, and handoffs appeared in three meetings. This is a suggested agenda focus, not a new agreed commitment.
+EVIDENCE: H-25SEP, H-02OCT
+LIMIT: Label as a recommendation based on the available records.
+MUST NOT INVENT: The team has already agreed this agenda; AI has assigned or saved new actions
+
+T1 | fact
+SOURCE: 02-messy-meeting-transcript.txt
+ASK: Which actions are clear enough to save, and which need a question first?
+EXPECTED: There are seven distinct agreed actions. Five have an identifiable owner and deadline: Alex's handover guide, Sam's checklist, Morgan's case study, Jo's referral export and Casey's testimonial clips. Sam's welcome-email refresh needs a deadline. The cover rota has a deadline of 12 October but its owner is inaudible. Review the five clear actions before saving, and clarify the other two.
+EVIDENCE: [02:08], [02:32]
+MUST NOT INVENT: 5/7 is measured AI accuracy; The repeated video upload is an eighth task; The podcast is an agreed task
+
+T2 | calculation
+SOURCE: 02-messy-meeting-transcript.txt
+ASK: What date did Alex mean by next Thursday?
+EXPECTED: Thursday 15 October 2026. The transcript was recorded on Thursday 8 October in Europe/London, so the next Thursday is seven days later.
+EVIDENCE: Transcript header, [00:19]
+MUST NOT INVENT: Resolve from today's date; Use file upload time as the source date
+
+T3 | partial
+SOURCE: 02-messy-meeting-transcript.txt
+ASK: Did Jo agree to update the Friday cover rota?
+EXPECTED: The transcript records a commitment to update the rota by 12 October, but the owner name was inaudible. Sam asked whether it was Jo or Casey; that does not confirm either person. The owner needs clarification.
+EVIDENCE: [02:26], [02:38]
+FOLLOW-UP: Who agreed to own the rota update?
+MUST NOT INVENT: Jo probably owns it; Casey probably owns it; An invented confidence percentage for either person
+
+E1 | fact
+SOURCE: 03-email-deadline-brought-forward.txt
+ASK: Who owns the Northstar proposal, when is it due, and why did it move?
+EXPECTED: Alex owns the final proposal. Its agreed deadline moved from Friday 16 October to Tuesday 13 October at 16:00 Europe/London. Sam requested the change on 6 October because Northstar's board needed it earlier; Alex confirmed on 7 October.
+EVIDENCE: E1, E3, E3
+
+P1 | calculation
+SOURCE: 04-email-deadline-postponed.txt
+ASK: What did postponing the approval summary two weeks do to its deadline?
+EXPECTED: The deadline moved from Thursday 8 October to Thursday 22 October, with Alex still the owner. The two weeks were measured from the original due date, not the email date. Alex accepted the change on 7 October because Jordan's answer was needed and Jordan was away until 19 October.
+EVIDENCE: P1, P2, P3
+MUST NOT INVENT: Jordan owns the summary; The new date is two weeks after the email was sent
+
+C1 | partial
+SOURCE: 05-email-conflicting-unconfirmed-updates.txt
+ASK: What is the best-supported deadline for the client dashboard export?
+EXPECTED: Friday 16 October is the last confirmed deadline, with Morgan as owner. Jo requested 12 October, and Casey later mentioned an unconfirmed 15 October date. Neither change is confirmed in the thread. Keep 16 October as the last agreed date and ask Morgan or Sam which update, if any, was accepted.
+EVIDENCE: C1, C2, C3
+FOLLOW-UP: Was either proposed date accepted?
+MUST NOT INVENT: The latest email automatically makes 15 October the agreed deadline; The request automatically makes 12 October the agreed deadline
+
+U1 | insufficient evidence
+SOURCE: 06-undated-notes.txt
+ASK: When is Alex's content plan due?
+EXPECTED: Alex agreed to send it next Thursday, but the original chat date and timezone are missing. I cannot safely turn that into a calendar date. Please provide the original timestamp and timezone.
+EVIDENCE: Alex's chat line, Source header
+MUST NOT INVENT: A calendar date derived from today or upload time
+
+R1 | insufficient evidence
+SOURCE: 07-meeting-history-for-ai-queries.txt
+ASK: How much revenue did our referrals bring in?
+EXPECTED: This history has no revenue figures or referral conversion values, so I cannot calculate that. We would need revenue linked to the referrals for the relevant period.
+EVIDENCE: Known limits
+MUST NOT INVENT: Invented revenue; An assumed conversion rate or order value
+

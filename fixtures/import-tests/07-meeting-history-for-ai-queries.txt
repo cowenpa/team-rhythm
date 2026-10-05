@@ -1,0 +1,53 @@
+FICTIONAL TEST DATA - coherent history for a two-person demo workspace
+Workspace: Alex and Sam
+Members: Alex Rivera and Sam Patel
+Timezone: Europe/London
+Latest meeting record: 2 October 2026. Later completion updates are not supplied.
+
+RECORD H-11SEP - Weekly Pulse, 11 September 2026
+Attendees: Alex and Sam.
+Signals: Alex, qualified enquiries, actual 8, target at least 10 enquiries.
+Signals: Sam, median response time, actual 5, target at most 4 hours.
+Issue: Unclear handoffs. Requests had no named next owner.
+Meeting ratings: Alex 7/10, Sam 7/10.
+No dated commitment is recorded in this snapshot.
+
+RECORD H-18SEP - Weekly Pulse, 18 September 2026
+Attendees: Alex and Sam.
+Signals: Alex, qualified enquiries, actual 9, target at least 10 enquiries.
+Signals: Sam, median response time, actual 4, target at most 4 hours.
+Issue: Unclear handoffs. The gap raised on 11 September remained open.
+Issue: Friday cover. The team needed to confirm cover when Sam was away.
+Meeting ratings: Alex 8/10, Sam 8/10.
+No new dated commitment is recorded in this snapshot.
+
+RECORD H-25SEP - Weekly Pulse, 25 September 2026
+Attendees: Alex and Sam.
+Signals: Alex, qualified enquiries, actual 12, target at least 10 enquiries.
+Signals: Sam, median response time, actual 6, target at most 4 hours.
+Issue: Unclear handoffs, raised for the third meeting.
+Decision: Document the handoff in the onboarding guide.
+Commitment: Alex will finish the onboarding guide by 2 October 2026.
+Recorded by: Sam. Alex is the owner, not Sam.
+Meeting ratings: Alex 8/10, Sam 8/10.
+
+RECORD H-01OCT - agreed deadline amendment, 1 October 2026
+Sam recorded an agreed extension of Alex's onboarding-guide deadline from
+2 October to 5 October 2026. Alex remains the owner.
+Reason for the extension: not recorded.
+Keep the original 25 September agreement; do not overwrite its due date.
+
+RECORD H-02OCT - Weekly Pulse, 2 October 2026
+Attendees: Alex and Sam.
+Signals: Alex, qualified enquiries, actual 10, target at least 10 enquiries.
+Signals: Sam, median response time, actual 3, target at most 4 hours.
+Decision: Friday cover confirmed. The name of the cover person is not recorded.
+Commitment carried forward: onboarding guide, owner Alex, due 5 October 2026.
+Status as recorded in this meeting: open.
+Meeting ratings: Alex 9/10, Sam 9/10.
+
+KNOWN LIMITS
+No completion record after 2 October is included.
+There are no revenue figures or conversion values in this history.
+The records do not establish why the deadline changed or prove what caused target misses.
+H-01OCT is an amendment, not a fifth meeting and not an extra meeting rating.

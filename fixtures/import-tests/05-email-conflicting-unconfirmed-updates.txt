@@ -1,0 +1,30 @@
+FICTIONAL TEST DATA - independent sample, not a real team record
+Timezone for all messages: Europe/London
+
+Message-ID: C1
+Sent: Monday 5 October 2026, 09:00 +0100
+From: Sam Patel <sam@team.example.test>
+To: Morgan Reed <morgan@team.example.test>
+Subject: Client dashboard export
+
+Confirmed in the Pulse: Morgan will send the client dashboard export by Friday 16 October.
+
+Message-ID: C2
+Sent: Tuesday 6 October 2026, 12:10 +0100
+From: Jo Bennett <jo@team.example.test>
+To: Morgan Reed <morgan@team.example.test>, Sam Patel <sam@team.example.test>
+Subject: Re: Client dashboard export
+
+Could Morgan get the same export to the client by Monday 12 October instead?
+They may need it for a call. This is a request; please confirm before changing the plan.
+
+Message-ID: C3
+Sent: Wednesday 7 October 2026, 14:30 +0100
+From: Casey Turner <casey@team.example.test>
+To: Morgan Reed <morgan@team.example.test>, Sam Patel <sam@team.example.test>
+Subject: Re: Client dashboard export
+
+I heard Thursday 15 October mentioned for that same export. Not sure the client
+agreed to it. Morgan and Sam, can you check which date applies?
+
+No reply confirming either proposed change is included in this export.

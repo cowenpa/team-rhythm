@@ -1,0 +1,158 @@
+{
+  "title": "Team Rhythm demo questions and expected answer behaviour",
+  "status": "Authored examples for testing; not recorded model outputs",
+  "rules": [
+    "Use only the specified source scope for each question.",
+    "Cite dated sources and distinguish facts, calculations, inference and missing evidence.",
+    "Best supported answer means useful supported detail with uncertainty, not an invented owner, date or reason.",
+    "Latest recorded status is not proof of a present-day outcome when updates are missing.",
+    "Do not invent numeric confidence scores or treat recommendations as saved commitments."
+  ],
+  "questions": [
+    {
+      "id": "H1", "kind": "fact", "source_file": "07-meeting-history-for-ai-queries.txt",
+      "question": "Who originally agreed to finish the onboarding guide, and by when?",
+      "expected_answer": "Alex agreed on 25 September to finish the onboarding guide by 2 October 2026. Sam recorded the agreement; Alex owns the task.",
+      "evidence": [{"reference": "H-25SEP", "excerpt": "Commitment: Alex will finish the onboarding guide by 2 October 2026."}],
+      "must_not_claim": ["Sam is the task owner", "The original agreement was due 5 October"]
+    },
+    {
+      "id": "H2", "kind": "fact", "source_file": "07-meeting-history-for-ai-queries.txt",
+      "question": "What is the latest recorded deadline for the onboarding guide, and what changed?",
+      "expected_answer": "The latest recorded deadline is 5 October, with Alex still the owner. The original deadline was 2 October. Sam recorded the agreed extension on 1 October, and the 2 October meeting carried it forward.",
+      "evidence": [{"reference": "H-25SEP", "excerpt": "Commitment: Alex will finish the onboarding guide by 2 October 2026."}, {"reference": "H-01OCT", "excerpt": "2 October to 5 October 2026. Alex remains the owner."}, {"reference": "H-02OCT", "excerpt": "Commitment carried forward: onboarding guide, owner Alex, due 5 October 2026."}],
+      "must_not_claim": ["The original agreement was overwritten", "The guide has been completed"]
+    },
+    {
+      "id": "H3", "kind": "calculation", "source_file": "07-meeting-history-for-ai-queries.txt",
+      "question": "What is the average meeting rating, and how many people answered?",
+      "expected_answer": "The average is 8.0 out of 10 across eight submitted ratings in four meetings. Two people, Alex and Sam, each rated all four meetings.",
+      "expected_values": {"average": 8.0, "ratings": 8, "meetings": 4, "distinct_respondents": 2},
+      "evidence": [{"reference": "H-11SEP", "excerpt": "Meeting ratings: Alex 7/10, Sam 7/10."}, {"reference": "H-18SEP and H-25SEP", "excerpt": "Meeting ratings: Alex 8/10, Sam 8/10."}, {"reference": "H-02OCT", "excerpt": "Meeting ratings: Alex 9/10, Sam 9/10."}],
+      "must_not_claim": ["Eight different people answered", "The amendment is a fifth meeting"]
+    },
+    {
+      "id": "H4", "kind": "calculation", "source_file": "07-meeting-history-for-ai-queries.txt",
+      "question": "How often did Alex and Sam miss their targets, and by how much?",
+      "expected_answer": "Both missed in two of four weeks, or 50%. Alex was short by two enquiries on 11 September and one on 18 September: an average shortfall of 1.5 enquiries across the missed weeks. Sam was one hour over on 11 September and two hours over on 25 September: an average excess of 1.5 hours across the missed weeks. These are different measures, so their gap sizes should not be combined.",
+      "expected_values": {"alex_misses": 2, "sam_misses": 2, "observations_per_person": 4, "alex_mean_missed_gap_enquiries": 1.5, "sam_mean_missed_gap_hours": 1.5},
+      "evidence": [{"reference": "H-11SEP", "excerpt": "Signals: Alex, qualified enquiries, actual 8, target at least 10 enquiries."}, {"reference": "H-18SEP", "excerpt": "Signals: Alex, qualified enquiries, actual 9, target at least 10 enquiries."}, {"reference": "H-11SEP", "excerpt": "Signals: Sam, median response time, actual 5, target at most 4 hours."}, {"reference": "H-25SEP", "excerpt": "Signals: Sam, median response time, actual 6, target at most 4 hours."}],
+      "must_not_claim": ["Lower response time is a miss", "A combined average gap in enquiries and hours", "Target misses prove individual underperformance"]
+    },
+    {
+      "id": "H5", "kind": "fact", "source_file": "07-meeting-history-for-ai-queries.txt",
+      "question": "Which issue keeps coming back?",
+      "expected_answer": "Unclear handoffs appears in three of four meetings: 11, 18 and 25 September. Friday cover appears in two: 18 September and 2 October. Counts are distinct meetings, not repeated mentions.",
+      "expected_values": {"handoff_meetings": 3, "friday_cover_meetings": 2, "total_meetings": 4},
+      "evidence": [{"reference": "H-11SEP", "excerpt": "Issue: Unclear handoffs. Requests had no named next owner."}, {"reference": "H-18SEP", "excerpt": "Issue: Unclear handoffs. The gap raised on 11 September remained open."}, {"reference": "H-25SEP", "excerpt": "Issue: Unclear handoffs, raised for the third meeting."}, {"reference": "H-18SEP", "excerpt": "Issue: Friday cover. The team needed to confirm cover when Sam was away."}, {"reference": "H-02OCT", "excerpt": "Decision: Friday cover confirmed. The name of the cover person is not recorded."}]
+    },
+    {
+      "id": "H6", "kind": "inference", "source_file": "07-meeting-history-for-ai-queries.txt",
+      "question": "What is most likely slowing the team down?",
+      "expected_answer": "Unclear handoffs is the strongest recurring concern in these records, appearing in three of four meetings. It is a sensible place to investigate first, but the records do not prove it caused the missed targets or the guide's delay.",
+      "evidence": [{"reference": "H-11SEP", "excerpt": "Issue: Unclear handoffs. Requests had no named next owner."}, {"reference": "H-18SEP", "excerpt": "Issue: Unclear handoffs. The gap raised on 11 September remained open."}, {"reference": "H-25SEP", "excerpt": "Issue: Unclear handoffs, raised for the third meeting."}],
+      "required_uncertainty": "Label the bottleneck suggestion as an inference; causal evidence is absent.",
+      "must_not_claim": ["Handoffs definitely caused the delays", "Alex or Sam is to blame"]
+    },
+    {
+      "id": "H7", "kind": "partial", "source_file": "07-meeting-history-for-ai-queries.txt",
+      "question": "Is the onboarding guide finished?",
+      "expected_answer": "Its last recorded status was open in the 2 October meeting, assigned to Alex and due 5 October. No later completion update is included, so I cannot confirm whether it is finished now.",
+      "evidence": [{"reference": "H-02OCT", "excerpt": "Status as recorded in this meeting: open."}, {"reference": "Known limits", "excerpt": "No completion record after 2 October is included."}],
+      "clarification": "Has Alex recorded a completion update since 2 October?",
+      "must_not_claim": ["Definitely completed", "Definitely still unfinished today", "Overdue without a query date and current-status evidence"]
+    },
+    {
+      "id": "H8", "kind": "partial", "source_file": "07-meeting-history-for-ai-queries.txt",
+      "question": "Why did Alex's deadline change?",
+      "expected_answer": "The record confirms an agreed extension from 2 to 5 October, recorded by Sam on 1 October. It does not record the reason. Alex or Sam would need to clarify that.",
+      "evidence": [{"reference": "H-01OCT", "excerpt": "Reason for the extension: not recorded."}],
+      "must_not_claim": ["Client urgency caused this extension", "Illness, workload or poor performance caused it", "Facts from another independent fixture apply to this guide"]
+    },
+    {
+      "id": "H9", "kind": "partial", "source_file": "07-meeting-history-for-ai-queries.txt",
+      "question": "Who is covering Friday?",
+      "expected_answer": "Friday cover was confirmed in the 2 October meeting, but the person's name was not recorded. I can confirm the decision, but not identify who is covering.",
+      "evidence": [{"reference": "H-02OCT", "excerpt": "Decision: Friday cover confirmed. The name of the cover person is not recorded."}],
+      "clarification": "Who was named in the Friday-cover agreement?",
+      "must_not_claim": ["Sam is covering because he appears nearby in the notes", "Alex is covering by default"]
+    },
+    {
+      "id": "H10", "kind": "partial", "source_file": "07-meeting-history-for-ai-queries.txt",
+      "question": "Who is underperforming more, Alex or Sam?",
+      "expected_answer": "Both missed their own targets in two of four weeks. Alex's measure is enquiries; Sam's is response time. That supports a comparison of miss frequency, but not a fair overall ranking of their performance. The records do not establish workload, resources or causes.",
+      "evidence": [{"reference": "H-11SEP", "excerpt": "Signals: Alex, qualified enquiries, actual 8, target at least 10 enquiries."}, {"reference": "H-18SEP", "excerpt": "Signals: Alex, qualified enquiries, actual 9, target at least 10 enquiries."}, {"reference": "H-11SEP", "excerpt": "Signals: Sam, median response time, actual 5, target at most 4 hours."}, {"reference": "H-25SEP", "excerpt": "Signals: Sam, median response time, actual 6, target at most 4 hours."}],
+      "must_not_claim": ["A made-up performance score", "Alex or Sam is the worse employee"]
+    },
+    {
+      "id": "H11", "kind": "inference", "source_file": "07-meeting-history-for-ai-queries.txt",
+      "question": "What should we put first on the next meeting agenda?",
+      "expected_answer": "A useful starting point is to review the onboarding guide and the handoff process: the guide was still open in the latest meeting, and handoffs appeared in three meetings. This is a suggested agenda focus, not a new agreed commitment.",
+      "evidence": [{"reference": "H-25SEP", "excerpt": "Issue: Unclear handoffs, raised for the third meeting."}, {"reference": "H-02OCT", "excerpt": "Commitment carried forward: onboarding guide, owner Alex, due 5 October 2026."}],
+      "required_uncertainty": "Label as a recommendation based on the available records.",
+      "must_not_claim": ["The team has already agreed this agenda", "AI has assigned or saved new actions"]
+    },
+    {
+      "id": "T1", "kind": "fact", "source_file": "02-messy-meeting-transcript.txt",
+      "question": "Which actions are clear enough to save, and which need a question first?",
+      "expected_answer": "There are seven distinct agreed actions. Five have an identifiable owner and deadline: Alex's handover guide, Sam's checklist, Morgan's case study, Jo's referral export and Casey's testimonial clips. Sam's welcome-email refresh needs a deadline. The cover rota has a deadline of 12 October but its owner is inaudible. Review the five clear actions before saving, and clarify the other two.",
+      "expected_values": {"tasks": 7, "ready": 5, "needs_clarification": 2},
+      "evidence": [{"reference": "[02:08]", "excerpt": "We haven't picked a deadline."}, {"reference": "[02:32]", "excerpt": "[overlapping speech; owner name inaudible]: I'll do the rota."}],
+      "must_not_claim": ["5/7 is measured AI accuracy", "The repeated video upload is an eighth task", "The podcast is an agreed task"]
+    },
+    {
+      "id": "T2", "kind": "calculation", "source_file": "02-messy-meeting-transcript.txt",
+      "question": "What date did Alex mean by next Thursday?",
+      "expected_answer": "Thursday 15 October 2026. The transcript was recorded on Thursday 8 October in Europe/London, so the next Thursday is seven days later.",
+      "expected_values": {"due_date": "2026-10-15", "anchor_date": "2026-10-08", "timezone": "Europe/London"},
+      "evidence": [{"reference": "Transcript header", "excerpt": "Recorded: Thursday 8 October 2026, 16:00-16:30"}, {"reference": "[00:19]", "excerpt": "I'll finish it by next Thursday."}],
+      "must_not_claim": ["Resolve from today's date", "Use file upload time as the source date"]
+    },
+    {
+      "id": "T3", "kind": "partial", "source_file": "02-messy-meeting-transcript.txt",
+      "question": "Did Jo agree to update the Friday cover rota?",
+      "expected_answer": "The transcript records a commitment to update the rota by 12 October, but the owner name was inaudible. Sam asked whether it was Jo or Casey; that does not confirm either person. The owner needs clarification.",
+      "evidence": [{"reference": "[02:26]", "excerpt": "the Friday cover rota needs updating by Monday the twelfth."}, {"reference": "[02:38]", "excerpt": "was that Jo or Casey? I couldn't hear the name."}],
+      "clarification": "Who agreed to own the rota update?",
+      "must_not_claim": ["Jo probably owns it", "Casey probably owns it", "An invented confidence percentage for either person"]
+    },
+    {
+      "id": "E1", "kind": "fact", "source_file": "03-email-deadline-brought-forward.txt",
+      "question": "Who owns the Northstar proposal, when is it due, and why did it move?",
+      "expected_answer": "Alex owns the final proposal. Its agreed deadline moved from Friday 16 October to Tuesday 13 October at 16:00 Europe/London. Sam requested the change on 6 October because Northstar's board needed it earlier; Alex confirmed on 7 October.",
+      "expected_values": {"owner": "alex", "original_due_date": "2026-10-16", "due_date": "2026-10-13", "due_time": "16:00"},
+      "evidence": [{"reference": "E1", "excerpt": "Alex will deliver the final Northstar proposal by Friday 16 October."}, {"reference": "E3", "excerpt": "Confirmed. I'll deliver the FINAL Northstar proposal by Tuesday 13 October at 16:00."}, {"reference": "E3", "excerpt": "Northstar's board needs it earlier."}]
+    },
+    {
+      "id": "P1", "kind": "calculation", "source_file": "04-email-deadline-postponed.txt",
+      "question": "What did postponing the approval summary two weeks do to its deadline?",
+      "expected_answer": "The deadline moved from Thursday 8 October to Thursday 22 October, with Alex still the owner. The two weeks were measured from the original due date, not the email date. Alex accepted the change on 7 October because Jordan's answer was needed and Jordan was away until 19 October.",
+      "expected_values": {"owner": "alex", "original_due_date": "2026-10-08", "due_date": "2026-10-22"},
+      "evidence": [{"reference": "P1", "excerpt": "Alex will complete the Northstar approval summary by Thursday 8 October."}, {"reference": "P2", "excerpt": "Jordan is away until Monday 19 October."}, {"reference": "P3", "excerpt": "Agreed, two weeks later than the original due date."}],
+      "must_not_claim": ["Jordan owns the summary", "The new date is two weeks after the email was sent"]
+    },
+    {
+      "id": "C1", "kind": "partial", "source_file": "05-email-conflicting-unconfirmed-updates.txt",
+      "question": "What is the best-supported deadline for the client dashboard export?",
+      "expected_answer": "Friday 16 October is the last confirmed deadline, with Morgan as owner. Jo requested 12 October, and Casey later mentioned an unconfirmed 15 October date. Neither change is confirmed in the thread. Keep 16 October as the last agreed date and ask Morgan or Sam which update, if any, was accepted.",
+      "expected_values": {"last_confirmed_due_date": "2026-10-16", "owner": "morgan", "unconfirmed_dates": ["2026-10-12", "2026-10-15"]},
+      "evidence": [{"reference": "C1", "excerpt": "Confirmed in the Pulse: Morgan will send the client dashboard export by Friday 16 October."}, {"reference": "C2", "excerpt": "This is a request; please confirm before changing the plan."}, {"reference": "C3", "excerpt": "Not sure the client"}],
+      "clarification": "Was either proposed date accepted?",
+      "must_not_claim": ["The latest email automatically makes 15 October the agreed deadline", "The request automatically makes 12 October the agreed deadline"]
+    },
+    {
+      "id": "U1", "kind": "insufficient_evidence", "source_file": "06-undated-notes.txt",
+      "question": "When is Alex's content plan due?",
+      "expected_answer": "Alex agreed to send it next Thursday, but the original chat date and timezone are missing. I cannot safely turn that into a calendar date. Please provide the original timestamp and timezone.",
+      "evidence": [{"reference": "Alex's chat line", "excerpt": "I'll send the content plan next Thursday."}, {"reference": "Source header", "excerpt": "The original message timestamp is missing."}],
+      "must_not_claim": ["A calendar date derived from today or upload time"]
+    },
+    {
+      "id": "R1", "kind": "insufficient_evidence", "source_file": "07-meeting-history-for-ai-queries.txt",
+      "question": "How much revenue did our referrals bring in?",
+      "expected_answer": "This history has no revenue figures or referral conversion values, so I cannot calculate that. We would need revenue linked to the referrals for the relevant period.",
+      "evidence": [{"reference": "Known limits", "excerpt": "There are no revenue figures or conversion values in this history."}],
+      "must_not_claim": ["Invented revenue", "An assumed conversion rate or order value"]
+    }
+  ]
+}

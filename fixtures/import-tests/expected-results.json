@@ -1,0 +1,107 @@
+{
+  "pack": "Team Rhythm fictional import tests",
+  "schema_version": 1,
+  "status": "Human-authored answer key; not results of a live model run",
+  "members": [
+    {"id": "alex", "name": "Alex Rivera", "aliases": ["Alex"]},
+    {"id": "sam", "name": "Sam Patel", "aliases": ["Sam"]},
+    {"id": "morgan", "name": "Morgan Reed", "aliases": ["Morgan"]},
+    {"id": "jo", "name": "Jo Bennett", "aliases": ["Jo"]},
+    {"id": "casey", "name": "Casey Turner", "aliases": ["Casey"]},
+    {"id": "taylor", "name": "Taylor Brooks", "aliases": ["Taylor"]}
+  ],
+  "external_people": [{"name": "Jordan", "role": "External dependency; not a workspace member"}],
+  "rules": [
+    "Count distinct agreed tasks, not duplicate mentions or quoted email copies.",
+    "Ready means owner and due date are supported; human review is still required before saving.",
+    "Preserve source dates and timezone; do not use the ingestion or current date as the source date.",
+    "Do not invent a time of day when only a due date is given.",
+    "Resolve each email's relative dates from that email's sent timestamp unless another baseline is explicit.",
+    "Later requests are proposed changes until the thread provides clear agreement.",
+    "For accepted changes, preserve the original due date, amendment, author, reason and evidence.",
+    "Unknown or inaudible ownership is not assigned to the chair, sender or nearest speaker.",
+    "Flags and the need for clarification matter more than exact task-title wording."
+  ],
+  "cases": [
+    {
+      "id": "clean_minutes",
+      "source_file": "01-clean-meeting-minutes.txt",
+      "source_date": "2026-10-05",
+      "timezone": "Europe/London",
+      "summary": {"tasks": 4, "ready": 4, "needs_clarification": 0, "decisions": 1, "signal_observations": 2},
+      "tasks": [
+        {"id": "A1", "title": "Refresh the client intake checklist", "owner": "alex", "due_date": "2026-10-08", "status": "ready", "source_reference": "A1", "source_excerpt": "Alex will refresh the client intake checklist by this Thursday.", "date_basis": "Thursday of the source week"},
+        {"id": "A2", "title": "Publish the new starter guide", "owner": "sam", "due_date": "2026-10-12", "status": "ready", "source_reference": "A2", "source_excerpt": "Sam will publish the new starter guide by next Monday.", "date_basis": "Next Monday after the Monday source date"},
+        {"id": "A3", "title": "Compile this week's referral figures", "owner": "morgan", "due_date": "2026-10-09", "status": "ready", "source_reference": "A3", "source_excerpt": "Morgan will compile this week's referral figures by this Friday.", "date_basis": "Friday of the source week"},
+        {"id": "A4", "title": "Ask three members for testimonials", "owner": "jo", "due_date": "2026-10-07", "status": "ready", "source_reference": "A4", "source_excerpt": "Jo will ask three members for testimonials by Wednesday 7 October.", "date_basis": "Explicit day and month, source year"}
+      ],
+      "decisions": [{"source_reference": "D1", "text": "Keep Friday's cover arrangement for another week and review it at the next Pulse."}],
+      "signal_observations": [{"name": "Referrals generated", "owner": "sam", "value": 4, "target": 5, "direction": "higher"}, {"name": "Support tickets closed", "owner": "morgan", "value": 22, "target": 20, "direction": "higher"}],
+      "must_exclude": ["Starting a podcast", "Signal targets as new tasks"]
+    },
+    {
+      "id": "messy_transcript",
+      "source_file": "02-messy-meeting-transcript.txt",
+      "source_date": "2026-10-08",
+      "source_time": "16:00",
+      "timezone": "Europe/London",
+      "summary": {"tasks": 7, "ready": 5, "needs_clarification": 2},
+      "demo_label": "Seven actions found. Five are ready; two need clarification.",
+      "tasks": [
+        {"id": "T1", "title": "Finish the client handover guide", "owner": "alex", "due_date": "2026-10-15", "status": "ready", "source_reference": "[00:19] and [00:39]", "source_excerpt": "I'll finish it by next Thursday.", "date_basis": "Next Thursday after Thursday 8 October: seven days later"},
+        {"id": "T2", "title": "Send the new-starter checklist to the team", "owner": "sam", "due_date": "2026-10-09", "status": "ready", "source_reference": "[00:39]", "source_excerpt": "I will send the new-starter checklist tomorrow, to the whole team.", "date_basis": "Source date plus one calendar day"},
+        {"id": "T3", "title": "Publish the case study", "owner": "morgan", "due_date": "2026-10-13", "status": "ready", "source_reference": "[01:04]", "source_excerpt": "I can publish the case study on Tuesday the thirteenth.", "date_basis": "Explicit Tuesday 13, source month and year"},
+        {"id": "T4", "title": "Export the referral results", "owner": "jo", "due_date": "2026-10-09", "status": "ready", "source_reference": "[01:21]", "source_excerpt": "I'll export the referral results by this Friday.", "date_basis": "Friday of the source week"},
+        {"id": "T5", "title": "Upload three approved testimonial clips", "owner": "casey", "due_date": "2026-10-14", "status": "ready", "source_reference": "[01:47]; repeated at [03:43]", "source_excerpt": "I'll upload the three approved testimonial clips on Wednesday, fourteenth October.", "date_basis": "Explicit day and month, source year", "duplicate_mentions": 2},
+        {"id": "T6", "title": "Refresh the welcome email", "owner": "sam", "due_date": null, "status": "needs_clarification", "source_reference": "[02:08]", "source_excerpt": "We also agreed I would refresh the welcome email. We haven't picked a deadline.", "missing_fields": ["due_date"], "question": "Sam, what deadline was agreed for the welcome email?"},
+        {"id": "T7", "title": "Update the Friday cover rota", "owner": null, "due_date": "2026-10-12", "status": "needs_clarification", "source_reference": "[02:26]-[02:38]", "source_excerpt": "[overlapping speech; owner name inaudible]: I'll do the rota.", "missing_fields": ["owner"], "question": "Who agreed to update the Friday cover rota? The owner name was inaudible."}
+      ],
+      "must_exclude": ["Podcast suggestion at [03:05]", "Ten posts as separate tasks at [03:19]", "Second testimonial-upload task at [03:43]"],
+      "must_not_infer": ["Missing welcome-email deadline", "Owner of the Friday cover rota", "Words marked inaudible"]
+    },
+    {
+      "id": "email_earlier_deadline",
+      "source_file": "03-email-deadline-brought-forward.txt",
+      "timezone": "Europe/London",
+      "summary": {"tasks": 1, "ready": 1, "needs_clarification": 0},
+      "tasks": [{"id": "E-T1", "title": "Deliver the final Northstar proposal", "owner": "alex", "due_date": "2026-10-13", "due_time": "16:00", "due_at": "2026-10-13T16:00:00+01:00", "status": "ready", "source_reference": "E3", "source_excerpt": "I'll deliver the FINAL Northstar proposal by Tuesday 13 October at 16:00.", "original_due_date": "2026-10-16", "deadline_history": [{"type": "original_agreement", "message": "E1", "recorded_at": "2026-10-05T10:00:00+01:00", "due_date": "2026-10-16", "recorded_by": "sam"}, {"type": "proposed_change", "message": "E2", "recorded_at": "2026-10-06T14:20:00+01:00", "due_date": "2026-10-13", "due_time": "16:00", "proposed_by": "sam"}, {"type": "accepted_change", "message": "E3", "recorded_at": "2026-10-07T09:10:00+01:00", "due_date": "2026-10-13", "due_time": "16:00", "accepted_by": "alex", "reason": "Client needs the final proposal earlier for its board meeting"}]}],
+      "must_exclude": ["Quoted E1 and E2 copies as new tasks", "Another task for the client's board meeting"]
+    },
+    {
+      "id": "email_postponed_deadline",
+      "source_file": "04-email-deadline-postponed.txt",
+      "timezone": "Europe/London",
+      "summary": {"tasks": 1, "ready": 1, "needs_clarification": 0},
+      "tasks": [{"id": "P-T1", "title": "Complete the Northstar approval summary", "owner": "alex", "due_date": "2026-10-22", "status": "ready", "source_reference": "P1-P3", "source_excerpt": "Agreed, two weeks later than the original due date.", "original_due_date": "2026-10-08", "date_basis": "Original due date 2026-10-08 plus 14 calendar days; not email date plus 14 days", "dependency": "Jordan's answer, after return on 19 October", "deadline_history": [{"type": "original_agreement", "message": "P1", "recorded_at": "2026-10-05T11:00:00+01:00", "due_date": "2026-10-08", "recorded_by": "sam"}, {"type": "proposed_change", "message": "P2", "recorded_at": "2026-10-06T15:40:00+01:00", "due_date": "2026-10-22", "proposed_by": "sam"}, {"type": "accepted_change", "message": "P3", "recorded_at": "2026-10-07T08:15:00+01:00", "due_date": "2026-10-22", "accepted_by": "alex", "reason": "Jordan is away until 19 October; Alex needs Jordan's answer"}]}],
+      "must_exclude": ["New task assigned to Jordan", "Repeated task from quoted P1"]
+    },
+    {
+      "id": "conflicting_unconfirmed_updates",
+      "source_file": "05-email-conflicting-unconfirmed-updates.txt",
+      "timezone": "Europe/London",
+      "summary": {"tasks": 1, "ready": 0, "needs_clarification": 1},
+      "tasks": [{"id": "C-T1", "title": "Send the client dashboard export", "owner": "morgan", "due_date": "2026-10-16", "last_confirmed_due_date": "2026-10-16", "status": "needs_clarification", "source_reference": "C1-C3", "source_excerpt": "Confirmed in the Pulse: Morgan will send the client dashboard export by Friday 16 October.", "proposed_due_dates": [{"date": "2026-10-12", "message": "C2", "status": "requested_not_accepted"}, {"date": "2026-10-15", "message": "C3", "status": "unconfirmed_hearsay"}], "review_reason": "Conflicting proposed deadline changes lack confirmation", "question": "Morgan or Sam, is 16 October still agreed, or was a change to 12 or 15 October confirmed?"}],
+      "must_not_infer": ["Latest sent message automatically overrides the confirmed deadline", "Jo or Casey becomes task owner"]
+    },
+    {
+      "id": "missing_source_date",
+      "source_file": "06-undated-notes.txt",
+      "source_date": null,
+      "timezone": null,
+      "summary": {"tasks": 1, "ready": 0, "needs_clarification": 1},
+      "tasks": [{"id": "U-T1", "title": "Send the content plan", "owner": "alex", "due_date": null, "status": "needs_clarification", "source_reference": "Alex's chat line", "source_excerpt": "I'll send the content plan next Thursday.", "missing_fields": ["source_date", "timezone", "due_date"], "question": "When did this chat take place, and in which timezone? I need that to resolve next Thursday."}],
+      "must_not_infer": ["Source date from file creation time", "Due date from ingestion or today's date"]
+    }
+  ],
+  "pdf_mirrors": [{"file": "../../output/pdf/sample-email-chains.pdf", "pages": [{"page": 1, "case_id": "email_earlier_deadline"}, {"page": 2, "case_id": "email_postponed_deadline"}], "expected_tasks": 2}],
+  "acceptance_checks": [
+    "Correct distinct task counts and ready/clarification counts for each case.",
+    "Owners map to members or stay null when unsupported.",
+    "Due dates match source-relative or amended dates; exact time preserved only when stated.",
+    "Citations and excerpts refer to the original source; no invented transcript words.",
+    "Original, proposed and accepted deadline events are distinct.",
+    "Ambiguous items remain unselected until a person resolves them.",
+    "Duplicate mentions, quoted messages, ideas, targets and dependencies do not become extra tasks.",
+    "Retrying a confirmed save does not duplicate commitments."
+  ]
+}

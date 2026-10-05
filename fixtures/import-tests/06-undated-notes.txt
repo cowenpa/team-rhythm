@@ -1,0 +1,11 @@
+FICTIONAL TEST DATA - independent sample, not a real team record
+
+Notes copied from a chat. The original message timestamp is missing.
+Timezone: not supplied
+Participants known: Alex Rivera and Sam Patel
+
+Alex: I'll send the content plan next Thursday.
+Sam: Yes, Alex owns the content plan. Let's ask for the original chat date before
+we convert "next Thursday" into a calendar date.
+
+The file creation date and today's date are not evidence of when this chat happened.

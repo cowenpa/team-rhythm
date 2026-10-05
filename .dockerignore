@@ -1,0 +1,11 @@
+.private
+node_modules
+.git
+infra
+output/*
+!output/pdf
+output/pdf/*
+!output/pdf/sample-email-chains.pdf
+tmp
+design-preview.html
+dist

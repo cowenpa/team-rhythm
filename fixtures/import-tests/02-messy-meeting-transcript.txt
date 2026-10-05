@@ -1,0 +1,24 @@
+FICTIONAL TEST DATA - independent sample, not a real team record
+
+Weekly Pulse - automatic transcript, uncorrected
+Recorded: Thursday 8 October 2026, 16:00-16:30
+Timezone: Europe/London
+Participants: Alex Rivera, Sam Patel, Morgan Reed, Jo Bennett, Casey Turner
+Some speaker labels and words were not captured accurately.
+
+[00:02] Sam: Right, can everyone hear? This is the Thursday Pulse, the eighth of October.
+[00:19] Alex: Yep. The client handover guide... hang on, not the old onboarding doc, the new CLIENT handover guide. I'll finish it by next Thursday.
+[00:39] Sam: Great, Alex owns that. I will send the new-starter checklist tomorrow, to the whole team.
+[01:04] Morgan: I can publish the case study on Tuesday the thirteenth. Yes, that's a commitment, put me down for it.
+[01:21] Jo: I'll export the referral results by this Friday. The spreadsheet export, not a new report.
+[01:47] Casey: And I'll upload the three approved testimonial clips on Wednesday, fourteenth October.
+[02:08] Sam: We also agreed I would refresh the welcome email. We haven't picked a deadline. Keep it on the list and ask me for the date.
+[02:26] Alex: Finally, the Friday cover rota needs updating by Monday the twelfth. Who's taking that?
+[02:32] [overlapping speech; owner name inaudible]: I'll do the rota. [inaudible]
+[02:38] Sam: Sorry, was that Jo or Casey? I couldn't hear the name. We do have a commitment to update the rota, but we'll need to confirm the owner.
+[03:05] Morgan: Could we also start a podcast, maybe? Just an idea, I'm not volunteering or agreeing a date.
+[03:19] Alex: Park the podcast. And ten posts a week is our content Signal target, not ten separate new action items.
+[03:43] Casey: My video upload is still the fourteenth, right? Same thing I already said, don't add a second task.
+[04:00] Sam: Correct. Meeting rating before we finish: eight from me.
+
+End of extract. Do not reconstruct words marked inaudible.

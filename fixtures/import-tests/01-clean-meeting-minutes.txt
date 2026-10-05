@@ -1,0 +1,28 @@
+FICTIONAL TEST DATA - independent sample, not a real team record
+
+Weekly Pulse - meeting minutes
+Meeting date: Monday 5 October 2026
+Meeting time: 09:00-09:30
+Timezone: Europe/London
+Attendees: Alex Rivera, Sam Patel, Morgan Reed, Jo Bennett
+Minutes taken by: Sam Patel
+
+WINS AND SIGNALS
+Referrals generated: 4, against a weekly target of at least 5. Sam owns this Signal.
+Support tickets closed: 22, against a weekly target of at least 20. Morgan owns this Signal.
+These are results and targets, not additional tasks.
+
+AGREED ACTIONS
+A1. Alex will refresh the client intake checklist by this Thursday.
+A2. Sam will publish the new starter guide by next Monday.
+A3. Morgan will compile this week's referral figures by this Friday.
+A4. Jo will ask three members for testimonials by Wednesday 7 October.
+
+DECISION
+D1. Keep Friday's cover arrangement for another week and review it at the next Pulse.
+
+DISCUSSION ONLY
+Someone suggested starting a podcast. No owner, date or decision to proceed was agreed.
+
+MEETING RATING
+Alex 8/10, Sam 9/10, Morgan 8/10, Jo 9/10.
